@@ -1,7 +1,14 @@
 import express from  "express";
-import connectDB from "./config/dbConfig.js";
+import morgan from "morgan";
+import authRoute from "./routes/authroute.js";
+import incidentRoute from "./routes/incidentRoute.js";
 
-connectDB();
 const app=express()
+
+app.use(morgan('dev'));
+app.use(express.json());
+
+app.use("/api/auth",authRoute)
+app.use("/api/incident",incidentRoute)
 
 export default app;

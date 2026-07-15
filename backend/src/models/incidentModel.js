@@ -17,6 +17,6 @@ const incidentSchema=new mongoose.Schema({
 });
 incidentSchema.index({location:"2dsphere"})
 
-const incidentModel=mongoose.Model("indcident",incidentSchema)
+const incidentModel=mongoose.model("indcident",incidentSchema)
 
 export default incidentModel
