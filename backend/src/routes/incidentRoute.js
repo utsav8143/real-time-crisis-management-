@@ -1,19 +1,17 @@
 import { Router } from "express";
-import {report, viewIncidents, viewIncidentsById, updateIncident} from "../controllers/incidentController.js"
-
+import {createIncident, viewIncidents, viewIncidentsById, updateIncident} from "../controllers/incidentController.js"
+import { protect, authorize } from "../middlewares/authMiddleware.js";
 
 const incidentRoute=Router();
 
 // POST /api/incident/report
-incidentRoute.post("/report",report)
+incidentRoute.post("/report",protect,createIncident)
 
 // GET /api/incident/view-incident
-incidentRoute.get("/view-incidents",viewIncidents)
+incidentRoute.get("/view-incidents",protect,viewIncidents)
 
-// GET /api/incident/view-incident/:id
-incidentRoute.get("/view-incidents/:id",viewIncidentsById)
 
 // PATCH /api/incident/update-incident
-incidentRoute.patch("/update-incident",updateIncident)
+incidentRoute.patch("/update-incident",protect,authorize("responder","admin"),updateIncident)
 
 export default incidentRoute

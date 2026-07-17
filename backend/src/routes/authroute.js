@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { register, login, logout, getMe, verifyEmail, refreshToken } from "../controllers/authController.js";
+import { protect } from "../middlewares/authMiddleware.js";
 
 const authRoute=Router();
 
@@ -10,15 +11,12 @@ authRoute.post("/register",register)
 authRoute.post("/login",login);
 
 // GET /api/auth/get-me
-authRoute.get("/get-me",getMe)
+authRoute.get("/get-me",protect,getMe)
 
 // GET /api/auth/refresh-token
 authRoute.get("/refresh-token",refreshToken)
 
 // GET /api/ath/logout
 authRoute.get("/logout",logout)
-
-// POST /api/auth/verify-email
-authRoute.post("/verify-email",verifyEmail)
 
 export default authRoute

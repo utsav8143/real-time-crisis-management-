@@ -3,7 +3,7 @@
 
 //  @desc report incident
 // @ROUTE POST/api/incident/report
- export async function report(req,res) {
+ export async function createIncident(req,res) {
     
  }
 
