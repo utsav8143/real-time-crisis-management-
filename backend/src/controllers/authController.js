@@ -81,7 +81,7 @@ export async function login(req, res) {
     const user = await userModel.findOne({ email });
 
     if (!user) {
-      return res.status(401).josn({ message: "Invalid email or password" });
+      return res.status(401).json({ message: "Invalid email or password" });
     }
 
     // if (!user.verified) {
@@ -148,6 +148,7 @@ export async function login(req, res) {
     });
   } catch (err) {
     console.log("Error in fething the user:", err);
+    return res.status(500).json({message:"Server Error", error: err.message});
   }
 }
 
@@ -189,9 +190,10 @@ export async function getMe(req, res) {
 
 export async function refreshToken(req, res) {
   const refreshToken = req.cookies.refreshToken;
+  console.log(refreshToken)
   try {
     if (!refreshToken) {
-      res.status(401).json({ message: "Refresh token not found" });
+      return res.status(401).json({ message: "Refresh token not found" });
     }
 
     const decoded = jwt.verify(refreshToken, config.JWT_SECRET_KEY);
