@@ -10,7 +10,7 @@ const incidentSchema=new mongoose.Schema({
         coordinates:{type:[Number], required:true} // [lng,lat]
     },
     status:{type:String, enum:["reported","verified","in-progress","resolved"], default:"reported"},
-    reportedBy:{type:mongoose.Schema.Types.ObjectId, ref:"user"},
+    reportedBy:{type:mongoose.Schema.Types.ObjectId, ref:"User"},
     aiSummary:String,
     createdAt:{type:Date, deafult:Date.now}
 

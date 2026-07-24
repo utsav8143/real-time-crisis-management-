@@ -36,7 +36,7 @@ export async function register(req, res) {
       },
       config.JWT_SECRET_KEY,
       {
-        expiresIn: "15m",
+        expiresIn: "7d",
       },
     );
 
@@ -128,7 +128,7 @@ export async function login(req, res) {
       },
       config.JWT_SECRET_KEY,
       {
-        expiresIn: "15m",
+        expiresIn: "7d",
       },
     );
 
@@ -221,7 +221,7 @@ export async function refreshToken(req, res) {
       },
       config.JWT_SECRET_KEY,
       {
-        expiresIn: "15m",
+        expiresIn: "7d",
       },
     );
 
