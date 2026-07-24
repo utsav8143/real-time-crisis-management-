@@ -3,7 +3,7 @@ import userModel from "../models/userModel.js";
 
 //  @desc report incident
 // @ROUTE POST/api/incident/report
-export async function createIncident(req, res) {
+export async function createIncident(req, res) { 
   const { title, description, category, location, reportedBy, coordinates, address } = req.body;
 
   try {
@@ -53,12 +53,13 @@ export async function viewIncidents(req, res) {
 
     const incident = await incidentModel
       .find(filter)
-      .populate("resportedBy", "name email role")
+      .populate("reportedBy", "name email role")
       .sort({ createdAt: -1 }); //newest first
 
-    res.status(200).json({ message: "Incidents Fetched successfully" });
+    res.status(200).json({ message: "Incidents Fetched successfully",incident});
   } catch (err) {
     res.status(400).json({ message: "Failed to fetch incidents" });
+    console.log(err)
   }
 }
 
