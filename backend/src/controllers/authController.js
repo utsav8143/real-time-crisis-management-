@@ -9,7 +9,7 @@ import sessionmodel from "../models/Sessionmodel.js";
 // @ROUTE POST api/auth/register
 
 export async function register(req, res) {
-  const { email, password, name } = req.body;
+  const { email, password, name , role} = req.body;
 
   try {
     const isAlreadyRegistered = await userModel.findOne({ email });
@@ -26,6 +26,7 @@ export async function register(req, res) {
     const user = await userModel.create({
       name,
       email,
+      role,
       password: hashedPassword,
       verified: false,
     });

@@ -10,8 +10,11 @@ incidentRoute.post("/report",protect,createIncident)
 // GET /api/incident/view-incident
 incidentRoute.get("/view-incidents",protect,viewIncidents)
 
+// GET /api/incidnet/view-incidents/:id
+incidentRoute.get("/view-incidents/:id",protect,viewIncidentsById)
 
-// PATCH /api/incident/update-incident
-incidentRoute.patch("/update-incident",protect,authorize("responder","admin"),updateIncident)
+
+// PATCH /api/incident/update-incidents/:id
+incidentRoute.patch("/update-incidents/:id",protect,authorize("responder","admin"),updateIncident)
 
 export default incidentRoute

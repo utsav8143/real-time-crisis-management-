@@ -3,8 +3,17 @@ import userModel from "../models/userModel.js";
 
 //  @desc report incident
 // @ROUTE POST/api/incident/report
-export async function createIncident(req, res) { 
-  const { title, description, category, location, reportedBy, coordinates, address } = req.body;
+// @access Private
+export async function createIncident(req, res) {
+  const {
+    title,
+    description,
+    severity,
+    location,
+    reportedBy,
+    coordinates,
+    address,
+  } = req.body;
 
   try {
     if (!coordinates || coordinates.length !== 2) {
@@ -16,7 +25,7 @@ export async function createIncident(req, res) {
     const incident = await incidentModel.create({
       title,
       description,
-      category,
+      severity,
       location: {
         type: "Point",
         coordinates, //[lng,lat]
@@ -25,15 +34,11 @@ export async function createIncident(req, res) {
       reportedBy: req.user._id,
     });
 
-    const populate = await incident.populate(
-      "reportedBy",
-      "name email role",
-    );
+    const populate = await incident.populate("reportedBy", "name email role");
 
     res
       .status(201)
-      .json({ message: "Incident created successfully", 
-         incident });
+      .json({ message: "Incident created successfully", incident });
   } catch (err) {
     res.status(500).json({ message: "Error in creating incident" });
     console.log(err);
@@ -42,6 +47,7 @@ export async function createIncident(req, res) {
 
 //  @desc view Incidents
 // @ROUTE GET/api/incident/view-incidents
+// @access Private
 export async function viewIncidents(req, res) {
   try {
     const { status, category, severity } = req.query;
@@ -56,17 +62,73 @@ export async function viewIncidents(req, res) {
       .populate("reportedBy", "name email role")
       .sort({ createdAt: -1 }); //newest first
 
-    res.status(200).json({ message: "Incidents Fetched successfully",incident});
+    res
+      .status(200)
+      .json({ message: "Incidents Fetched successfully", incident });
   } catch (err) {
     res.status(400).json({ message: "Failed to fetch incidents" });
-    console.log(err)
+    console.log(err);
   }
 }
 
 //  @desc view Incidents by ID
 // @ROUTE GET/api/incident/view-incidents/:id
-export async function viewIncidentsById(req, res) {}
+// @access Private
+export async function viewIncidentsById(req, res) {
+  try {
+    const id = req.params.id;
+
+    if (!id) {
+      return res
+        .status(400)
+        .json({ message: "Incident ID is provided is invalid" });
+    }
+
+    const incident = await incidentModel
+      .findById(id)
+      .populate("reportedBy", "name email role");
+
+    res
+      .status(201)
+      .json({ message: "Incident fetched successfully", incident });
+  } catch (err) {
+    res.status(400).json({ message: "Error in finding the invoice by ID" });
+    console.log(err)``;
+  }
+}
 
 //  @desc update Incidents
-// @ROUTE GET/api/incident/update-incidents
-export async function updateIncident(req, res) {}
+// @ROUTE GET/api/incident/update-incidents/:id
+// @access Private
+export async function updateIncident(req, res) {
+  const { status, severity } = req.body;
+
+  try {
+    const allowedRoles = ["status", "severity"];
+    const update = {};
+
+    for (const key of allowedRoles) {
+      if (req.body !== undefined) {
+        update[key] = req.body[key];
+      }
+    }
+
+    const incident = await incidentModel
+      .findByIdAndUpdate(req.params.id, update, {
+        new: true,
+        runValidators: true,
+      })
+      .populate("reportedBy", "name email role");
+
+    if (!incident) {
+      return res.status(400).json({ message: "Incident not found" });
+    }
+
+    res
+      .status(200)
+      .json({ message: "Incident updated successfully", incident });
+  } catch (err) {
+    res.status(400).json({ message: "Error in updating the incident" });
+    console.log(err);
+  }
+}
