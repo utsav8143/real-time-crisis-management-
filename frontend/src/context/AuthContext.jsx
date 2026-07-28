@@ -3,7 +3,7 @@ import api from "../utils/axiosInstance";
 
 const AuthContext = createContext(null);
 
-export function authProvider({ children }) {
+export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -18,7 +18,7 @@ export function authProvider({ children }) {
   }, []);
 
   const login = async (email, password) => {
-    const { data } = await api.post("/auth/login", { email, passowrd });
+    const { data } = await api.post("/auth/login", { email, password });
     const { token, ...userData } = data;
 
     localStorage.setItem("token", token);
@@ -37,7 +37,7 @@ export function authProvider({ children }) {
     const { token, ...userData } = data;
 
     localStorage.setItem("token", token);
-    localStorage.setItem("user", userData);
+    localStorage.setItem("user", JSON.stringify(userData));
     setUser(userData);
     return userData;
   };

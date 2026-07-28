@@ -16,7 +16,7 @@ api.interceptors.request.use((config)=>{
 
 // @Response interceptor
 // Auto-logout if token expires 
-api.interceptor.response.use(
+api.interceptors.response.use(
     (response) => response,
     (error) => {
         if(error.response?.status===401){
