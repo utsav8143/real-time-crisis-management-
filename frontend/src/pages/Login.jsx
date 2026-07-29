@@ -2,6 +2,8 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext.jsx";
+import { Mail } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -26,7 +28,39 @@ const Login = () => {
       setLoading(false);
     }
   };
-  return <div className="font-bold bg-yellow-500">Login</div>;
+  return (
+    <div className="min-h-screen bg-white">
+      <h1 className="">SIGNAL</h1>
+      <div className="">
+        <div className="">
+          <form className="" onSubmit={handleSubmit}>
+            <div className="">
+              <h2 className="">Login to your account</h2>
+              <p className="">Please enter your details to login</p>
+            </div>
+
+            <div className="">
+              {/* Email */}
+              <label className="">Email</label>
+              
+                <input type="email" value={email} required 
+                onChange={(e)=> setEmail(e.target.value)}/>
+
+                <label htmlFor="password">Password</label>
+                <input type="password" value={password} required
+                onChange={(e) => setPassword(e.target.value)}
+                minLength={6} />
+
+                <button type="submit" disabled={loading}>{loading?"Logging in...":"Login"}</button>
+
+                <p className="">Don't have an account? <Link href="/register">Register</Link></p>
+            
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Login;
