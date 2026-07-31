@@ -24,7 +24,13 @@ const Login = () => {
       await login(email, password);
       navigate("/dashboard");
     } catch (err) {
-      setError(err.response?.data.message || "Login Failed");
+      if (err.response) {
+        setError(err.response.data?.message || "Invalid email or password");
+      } else if (err.request) {
+        setError("Cannot reach the server. Please try again shortly");
+      } else {
+        setError("Something went wrong");
+      }
     } finally {
       setLoading(false);
     }
@@ -32,22 +38,22 @@ const Login = () => {
   return (
     <div style={{ width: "100%", height: "100%", position: "relative" }}>
       <div className="absolute inset-0 z-0">
-      <Particles
-        particleColors={["#ffffff"]}
-        particleCount={200}
-        particleSpread={10}
-        speed={0.1}
-        particleBaseSize={100}
-        moveParticlesOnHover
-        alphaParticles={false}
-        disableRotation={false}
-        pixelRatio={1}
-         
-      /> </div>
+        <Particles
+          particleColors={["#F9A825"]}
+          particleCount={200}
+          particleSpread={10}
+          speed={0.1}
+          particleBaseSize={100}
+          moveParticlesOnHover
+          alphaParticles={false}
+          disableRotation={false}
+          pixelRatio={1}
+        />{" "}
+      </div>
 
       <div className="min-h-screen bg-color relative z-10 opacity-95 ">
         <div className="flex  ">
-          <div className=" h-3 w-3 bg-red-400 rounded-sm  mt-5 ms-2 flex justify-center items-center animate-glow">
+          <div className=" h-3 w-3 bg-red-500 rounded-sm  mt-5 ms-2 flex justify-center items-center animate-glow">
             <div className="h-1.5 w-1.5 bg-red-800 rounded-sm "></div>
           </div>
           <h1 className="font-bold text-2xl m-2 text-white">ResQ</h1>
@@ -80,7 +86,10 @@ const Login = () => {
                       value={email}
                       required
                       className="border border-white rounded-sm p-2 pl-12 py-3 pe-5 w-100"
-                      onChange={(e) => setEmail(e.target.value)}
+                      onChange={(e) => {
+                        setEmail(e.target.value);
+                        if (error) setError("");
+                      }}
                       placeholder="Enter your email"
                     />
                   </div>
@@ -100,12 +109,18 @@ const Login = () => {
                       placeholder="Enter your password"
                     />
                   </div>
+                  {/* Error/Success message */}
+                  {error && (
+                    <div className="p-3 bg-red-50 border border-red-200 rounded-lg mt-7">
+                      <p className="text-sm text-red-600">{error}</p>
+                    </div>
+                  )}
 
                   <div className="group">
                     <button
                       type="submit"
                       disabled={loading}
-                      className="border border-yellow-700 hover:border-yellow-900 hover:cursor-pointer hover:scale-102 transition-transform w-full mt-12 p-3 rounded-3xl flex gap-2 ps-40 bg-linear-to-r from-yellow-600 to-yellow-800 font-semibold "
+                      className="border border-yellow-700 hover:border-yellow-900 hover:cursor-pointer  transition-transform w-full mt-12 p-3 rounded-3xl flex gap-2 ps-40 bg-linear-to-r from-yellow-600 to-yellow-800 font-semibold "
                     >
                       {loading ? "Logging in..." : "Login"}
                       <ArrowRight className="h-5 w-5 mt-1 group-hover:translate-x-1 transition-transform " />
@@ -128,7 +143,6 @@ const Login = () => {
         </div>
       </div>
     </div>
-   
   );
 };
 

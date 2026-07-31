@@ -3,7 +3,7 @@ import Particles from '../animations/Particles'
 import { useState } from 'react'
 import { useNavigate,Link } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
-import { FileText,Mail,Lock , ArrowRight} from 'lucide-react'
+import { FileText,Mail,Lock , ArrowRight, User, List} from 'lucide-react'
 
 const Register = () => {
 
@@ -24,17 +24,17 @@ const Register = () => {
   }
 
   const handleSubmit= async(e)=>{
-    e.preventDeafult();
+    e.preventDefault();
     setError('');
     setLoading(true);
 
     try{
-      await register(form.name, form.email, form.password, form.role)
+      await register(formdata.name, formdata.email, formdata.password, formdata.role)
       navigate("/dashboard")
     } catch(err){
       setError(err.response?.data?.message || "Registration failed")
-    } finally{}
-      setLoading(false)
+    } finally{
+      setLoading(false)}
   }
   
   return (
@@ -55,76 +55,106 @@ const Register = () => {
       /> </div>
 
       <div className="min-h-screen bg-color relative z-10 opacity-95 ">
-        <div className="flex  ">
+        <div className="flex">
           <div className=" h-3 w-3 bg-red-500 rounded-sm  mt-5 ms-2 flex justify-center items-center animate-glow">
             <div className="h-2 w-2 bg-red-800 rounded-lg "></div>
           </div>
-          <h1 className="font-bold text-2xl m-2 text-white">ResQ</h1>
+          <h1 className="font-bold text-2xl m-2 text-white ">ResQ</h1>
         </div>
-        <div className="w-full h-screen flex justify-center items-center">
+        <div className="w-full h-screen flex justify-center items-center lg:mt-0 mt-20">
           <div className="text-white bg-gray-800 w-2/3 rounded-4xl">
             <div className="flex items-center justify-center">
-              <FileText className="mt-10  border border-yellow-700 h-15 w-15 p-3 rounded-xl bg-yellow-600 text-white shadow-[0_10px_20px] shadow-amber-900" />
+              <FileText className="mt-7  border border-yellow-700 h-15 w-15 p-3 rounded-xl bg-yellow-600 text-white shadow-[0_10px_20px] shadow-amber-900" />
             </div>
 
             <form className="p-10" onSubmit={handleSubmit}>
-              <div className="m-3">
+              <div>
                 <h2 className="text-2xl font-bold text-center">
-                  Login to your account
+                  Create Account
                 </h2>
                 <p className="mt-3 text-center text-sm">
-                  Please enter your details
+                  Join ResQ today
                 </p>
               </div>
 
               <div className="flex justify-center">
                 <div className="mt-10 ">
-                  {/* Email */}
 
-                  <label className="">Email</label>
-                  <div className="relative mt-2 ">
-                    <Mail className="absolute w-6 h-6 m-3 text-gray-500 " />
+                 {/* Name */}
+                 <label htmlFor="name">Name </label>
+                 <div className="relative mt-2">
+                  <User className='absolute w-6 h-6 m-3 text-gray-500'/>
+                  <input type="text"
+                  name='name' 
+                    value={formdata.name}
+                    required
+                    placeholder='Enter your name'
+                    onChange={handleChange}
+                  className="absolute border border-white rounded-sm p-2 pl-12 py-3 pe-5 w-100" />
+                 </div>
+
+
+                  {/* Email */}
+                  <div className="mt-20">
+                  <label htmlFor='email'>Email</label>
+                  </div>
+                  <div className="relative  ">
+                    <Mail className="absolute w-6 h-6 m-3 mt-5 text-gray-500 " />
                     <input
                       type="email"
+                      name='email'
                       value={formdata.email}
                       required
-                      className="border border-white rounded-sm p-2 pl-12 py-3 pe-5 w-100"
-                      onChange={(e) => setEmail(e.target.value)}
+                      className="border border-white rounded-sm p-2 pl-12 py-3 pe-5 w-100 mt-2"
+                      onChange={handleChange}
                       placeholder="Enter your email"
                     />
                   </div>
-
-                  <div className="mt-9">
+                  
+                  {/* Password */}
+                  <div className="mt-6">
                     <label htmlFor="password">Password</label>
                   </div>
                   <div className="relative">
                     <Lock className="absolute w-6 h-6 text-gray-500 mt-5 ms-3" />
                     <input
                       type="password"
+                      name='password'
                       value={formdata.password}
                       required
-                      onChange={(e) => setPassword(e.target.value)}
+                      onChange={handleChange}
                       minLength={6}
                       className="border border-white rounded-sm p-2 pl-12 py-3 pe-5 w-100 mt-2"
                       placeholder="Enter your password"
                     />
                   </div>
 
+                  <div className="mt-6">
+                    <label htmlFor="role">Role</label>
+                  </div>
+                  <div className="relative mt-1.5">
+                    <List className='absolute text-gray-500 w-6 h-6 m-2 mt-3'/>
+                    <select name="role" value={formdata.role} onChange={handleChange} className='border border-white p-2 pl-12 py-3 pe-5 w-100 rounded-sm'>
+                      <option value="citizen" className='bg-gray-900'>Citizen - reporting incidents</option>
+                      <option value="responder" className='bg-gray-900'>Responder - handling incidents</option>
+                    </select>
+                  </div>
+
                   <div className="group">
                     <button
                       type="submit"
                       disabled={loading}
-                      className="border border-yellow-700 hover:border-yellow-900 hover:cursor-pointer hover:scale-102 transition-transform w-full mt-12 p-3 rounded-3xl flex gap-2 ps-40 bg-linear-to-r from-yellow-600 to-yellow-800 font-semibold "
+                      className="border border-yellow-700 hover:border-yellow-900 hover:cursor-pointer transition-transform w-full mt-12 p-3 rounded-3xl flex gap-2 ps-40 bg-linear-to-r from-yellow-600 to-yellow-800 font-semibold "
                     >
-                      {loading ? "Logging in..." : "Login"}
+                      {loading ? "Signinging in..." : "Sign Up"}
                       <ArrowRight className="h-5 w-5 mt-1 group-hover:translate-x-1 transition-transform " />
                     </button>
                   </div>
 
                   <p className="mt-7 text-center text-sm">
-                    Don't have an account?{" "}
+                    Already have an account?{" "}
                     <Link
-                      to="/register"
+                      to="/login"
                       className="font-bold hover:underline transition-transform"
                     >
                       Register
