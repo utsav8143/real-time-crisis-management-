@@ -56,7 +56,7 @@ const Register = () => {
 
       <div className="min-h-screen bg-color relative z-10 opacity-95 ">
         <div className="flex">
-          <div className=" h-3 w-3 bg-red-500 rounded-sm  mt-5 ms-2 flex justify-center items-center animate-glow">
+          <div className=" h-3 w-3 bg-red-600 rounded-sm  mt-5 ms-2 flex justify-center items-center animate-glow">
             <div className="h-2 w-2 bg-red-800 rounded-lg "></div>
           </div>
           <h1 className="font-bold text-2xl m-2 text-white ">ResQ</h1>
@@ -157,7 +157,7 @@ const Register = () => {
                       to="/login"
                       className="font-bold hover:underline transition-transform"
                     >
-                      Register
+                      Login
                     </Link>
                   </p>
                 </div>
