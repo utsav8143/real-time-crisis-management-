@@ -6,6 +6,7 @@
   --breakpoint-3xl: 1920px;
   --color-primary:#FFBF00;
   --color-secondary:#10141B;
+   --animate-pulse-ring: pulse-ring 2s infinite;
 }
 
 @layer base{
@@ -33,3 +34,29 @@
 .animate-glow {
   animation: glow 2s ease-in-out infinite;
 } 
+
+@keyframes pulse {
+  0%,100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.animate-pulse{
+  animation:pulse 2s infinite;
+}
+
+ @keyframes pulse-ring {
+    0% {
+      box-shadow: 0 0 0 0 rgba(229, 72, 77, 0.55);
+    }
+    70% {
+      box-shadow: 0 0 0 8px rgba(229, 72, 77, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(229, 72, 77, 0);
+    }
+  }

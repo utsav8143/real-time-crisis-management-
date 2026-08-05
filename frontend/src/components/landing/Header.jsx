@@ -19,9 +19,9 @@ const Header = () => {
   return (
     <div >
       <div className="flex  lg:justify-evenly justify-between ">
-        <div className="flex ms-32 mt-3 ">
-          <div className=" h-3 w-3 bg-red-600 rounded-sm  mt-5 ms-2 flex justify-center items-center animate-glow ">
-            <div className="h-1.5 w-1.5 bg-red-800 rounded-sm "></div>
+        <div className="flex  mt-3 ">
+          <div className=" h-3 w-3 bg-red-600 rounded-sm  mt-5  flex justify-center items-center animate-pulse  ">
+            <div className="h-1.5 w-1.5 bg-red-900 rounded-sm "></div>
           </div>
           <h1 className="font-bold text-2xl m-2 text-white">ResQ</h1>
         </div>
