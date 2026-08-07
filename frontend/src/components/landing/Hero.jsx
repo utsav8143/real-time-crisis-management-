@@ -35,7 +35,7 @@ const Hero = () => {
         </a>
       </div>
       <div className="border border-gray-600 w-3/4 h-55 mt-20 rounded-lg overflow-hidden relative">
-        <div className="flex justify-between p-3 border-b border-gray-600 bg-gray-700 z-10">
+        <div className="flex justify-between p-3 border-b border-gray-600 bg-gray-700 z-20">
           <h1 className="font-bold text-gray-400">INCIDENT_LOG.STREAM</h1>
           <div className="flex items-center gap-1">
             <div className="w-2 h-2 rounded-xl bg-red-700 shadow=[0_0_0_0_rgba(229,72,77,0.6)] animate-pulse-ring shrink"></div>
