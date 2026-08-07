@@ -2,6 +2,19 @@ import React from "react";
 import INCIDENTS from "../../utils/data.js";
 
 const Hero = () => {
+  const severityStyle = {
+    critical: "bg-red-400 text-red-900 ",
+    medium: "bg-blue-400 text-blue-900",
+    high: "bg-yellow-400 text-yellow-900",
+    low: "bg-green-400 text-green-900",
+  };
+
+  function getSeverityStyle(severity) {
+    return (
+      severityStyle[severity?.toLowerCase()] || "text-gray-700 bg-gray-500"
+    );
+  }
+
   return (
     <div className="h-screen">
       <div className="">
@@ -35,25 +48,37 @@ const Hero = () => {
         </a>
       </div>
       <div className="border border-gray-600 w-3/4 h-55 mt-20 rounded-lg overflow-hidden relative">
-        <div className="flex justify-between p-3 border-b border-gray-600 bg-gray-700 z-20">
+        <div className="flex justify-between p-3 border-b border-gray-600 bg-gray-700 relative z-10  ">
           <h1 className="font-bold text-gray-400">INCIDENT_LOG.STREAM</h1>
           <div className="flex items-center gap-1">
             <div className="w-2 h-2 rounded-xl bg-red-700 shadow=[0_0_0_0_rgba(229,72,77,0.6)] animate-pulse-ring shrink"></div>
             <p className="text-red-600 font-bold">Live</p>
           </div>
         </div>
-        <div className="bg-gray-900 animate-scroll-up">
-          {INCIDENTS.map((incident,index)=>(
-            <div className="grid lg:grid-cols-4 p-3 border-b border-gray-400 text-sm " key={index}>
-              <div className="text-gray-500">{incident.time}</div>
-              <div className="text-gray-500 ms-3">{incident.category}</div>
-              <div className="text-white ">{incident.Location}</div>
-              <div className="ms-20">{incident.severity}</div>
-            </div>
 
-          ))}
+        <div className="relative flex-1 overflow-hidden bg-gray-900">
+          <div className="animate-scroll-up flex flex-col">
+            {[...INCIDENTS, ...INCIDENTS].map((incident, index) => (
+              <div
+                className="grid lg:grid-cols-4 p-3 border-b border-gray-400 text-sm shrink-0"
+                key={index}
+              >
+                <div className="text-gray-500 ms-5 font-extrabold">
+                  {incident.time}
+                </div>
+                <div className="text-gray-500 ms-3">{incident.category}</div>
+                <div className="text-white">{incident.Location}</div>
+                <div
+                  className={`ms-20 border rounded-sm p-1 text-center opacity-80 ${getSeverityStyle(incident.severity)}`}
+                >
+                  {incident.severity}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
+      <div className="bg-gray-700 w-full border border-gray-700 mt-10"></div>
     </div>
   );
 };
