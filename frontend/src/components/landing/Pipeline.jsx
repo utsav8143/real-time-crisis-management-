@@ -1,10 +1,12 @@
 import React from 'react'
 
+
 const Pipeline = () => {
   return (
-    <div className="mt-40" id='pipeline'>
+    <section id='pipeline' className=''>
+    <div className="mt-40" >
         <div className="">
-            <h1 className="text-primary font-bold ">The Pipeline</h1>
+            <h1 className="text-primary font-bold ">THE PIPELINE</h1>
         </div>
         <div className="mt-10 lg:w-1/2">
             <h2 className="text-4xl text-white">From citizen report to closed incidents.</h2>
@@ -32,8 +34,9 @@ const Pipeline = () => {
                 <p className="mt-5 text-gray-400">Firebase notifies the responder, status updates flow back to the board, until it's marked resolved.</p>
             </div>
         </div>
-        <div className="mt-20 border border-b-gray-700"></div>
+        <div className="mt-20 border border-b-gray-700 "></div>
     </div>
+    </section>
   )
 }
 
