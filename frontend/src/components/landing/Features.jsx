@@ -3,7 +3,7 @@ import { LocateFixed, BrainCircuit, PersonStanding,LayoutDashboard, Bell, Radio 
 
 const Features = () => {
   return (
-    <section id='features' className='scroll-m-5'>
+    <section id='features' className='scroll-m-27'>
         <div className="mt-20">
             <div className="lg:w-1/2">
                 <h1 className="text-primary">BUILT FOR CITIZENS AND RESPONDERS</h1>

@@ -2,7 +2,7 @@ import React from 'react'
 
 const Map = () => {
   return (
-    <section className='scroll-m-5' id="risk-map">
+    <section className='scroll-m-27' id="risk-map">
     <div className="mt-20">
         <div className="flex items-center gap-2">
             <div className="w-2 h-2 rounded-xl bg-red-700 shadow=[0_0_0_0_rgba(229,72,77,0.6)] animate-pulse-ring shrink"></div>

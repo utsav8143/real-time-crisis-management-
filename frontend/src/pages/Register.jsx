@@ -61,7 +61,7 @@ const Register = () => {
           </div>
           <h1 className="font-bold text-2xl m-2 text-white ">ResQ</h1>
         </div>
-        <div className="w-full h-screen flex justify-center items-center lg:mt-0 mt-20">
+        <div className="w-full h-screen flex justify-center items-center mt-20">
           <div className="text-white bg-gray-800 w-2/3 rounded-4xl">
             <div className="flex items-center justify-center">
               <FileText className="mt-7  border border-yellow-700 h-15 w-15 p-3 rounded-xl bg-yellow-600 text-white shadow-[0_10px_20px] shadow-amber-900" />

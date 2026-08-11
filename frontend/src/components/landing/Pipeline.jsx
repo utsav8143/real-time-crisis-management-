@@ -3,8 +3,8 @@ import React from 'react'
 
 const Pipeline = () => {
   return (
-    <section id='pipeline' className=''>
-    <div className="mt-40" >
+    <section id='pipeline' className='scroll-mt-27'>
+    <div className="mt-70" >
         <div className="">
             <h1 className="text-primary font-bold ">THE PIPELINE</h1>
         </div>

@@ -17,6 +17,11 @@ const Header = () => {
   }, []);
 
   return (
+    <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+      isScrolled
+      ? "bg-gray-900 opacity-95 backdrop-blur-sm shadow-lg shadow-gray-800 pb-3"
+      : "lg:bg-transparent bg-gray-900 pb-3"
+    }`}>
     <div >
       <div className="flex  lg:justify-evenly justify-between ">
         <div className="flex  mt-3 sm:ms-5 ">
@@ -46,26 +51,7 @@ const Header = () => {
           >
             How it Works
           </a>
-          <a
-            href="#features"
-            className="text-gray-400 hover:text-primary transition-colors duration-300 relative 
-         after:content-['']
-         after:absolute
-         after:left-0
-         after:bottom-3
-         after:w-full
-         after:h-0.5
-         after:bg-primary
-         after:opacity-0
-         after:transition-[opacity,all,transform]
-         after:duration-300
-         hover:after:opacity-100
-         hover:after:translate-y-1
-         focus:after:opacity-100
-         focus:after:translate-y-1"
-          >
-            Features
-          </a>
+        
           <a
             href="#risk-map"
             className="text-gray-400 hover:text-primary transition-colors duration-300 relative 
@@ -85,6 +71,26 @@ const Header = () => {
          focus:after:translate-y-1"
           >
             Risk Map
+          </a>
+            <a
+            href="#features"
+            className="text-gray-400 hover:text-primary transition-colors duration-300 relative 
+         after:content-['']
+         after:absolute
+         after:left-0
+         after:bottom-3
+         after:w-full
+         after:h-0.5
+         after:bg-primary
+         after:opacity-0
+         after:transition-[opacity,all,transform]
+         after:duration-300
+         hover:after:opacity-100
+         hover:after:translate-y-1
+         focus:after:opacity-100
+         focus:after:translate-y-1"
+          >
+            Features
           </a>
           <a
             href="#ai-classification"
@@ -124,7 +130,7 @@ const Header = () => {
 
         {/* Hamburger Icon */}
         <button
-          className="lg:hidden me-40 mt-5 text-gray-500"
+          className="lg:hidden me-20 mt-5 text-gray-500 "
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X /> : <Menu />}
@@ -134,28 +140,33 @@ const Header = () => {
       {/* Mobile Menu */}
       {isOpen && (
         <div className="">
-          <div className="lg:hidden flex flex-col items-center justify-center  mt-5 bg-gray-800 opacity-75">
+          <div className="lg:hidden flex flex-col items-center justify-center  mt-5 bg-gray-900 ">
             <a
               href="#pipeline"
               className="text-gray-300 font-bold  p-5 hover:text-gray-100 transition-transform"
+              onClick={()=>setIsOpen(false)}
+              
             >
               How it Works
             </a>
             <a
               href="#features"
               className="text-gray-300 font-bold  p-5 hover:text-gray-100 transition-transform"
+              onClick={()=>setIsOpen(false)}
             >
               Features
             </a>
             <a
               href="#risk-map"
               className="text-gray-300 font-bold  p-5 hover:text-gray-100 transition-transform"
+              onClick={()=>setIsOpen(false)}
             >
               Risk Map
             </a>
             <a
               href="#ai-classification"
               className="text-gray-300 font-bold  p-5 hover:text-gray-100 transition-transform"
+              onClick={()=>setIsOpen(false)}
             >
               AI Classification
             </a>
@@ -178,6 +189,7 @@ const Header = () => {
         </div>
       )}
     </div>
+    </header>
   );
 };
 
