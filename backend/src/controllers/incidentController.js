@@ -36,6 +36,9 @@ export async function createIncident(req, res) {
 
     const populate = await incident.populate("reportedBy", "name email role");
 
+    const io=req.app.get("io");
+    io.to("dashboard").emit("newIncident", populate);
+
     res
       .status(201)
       .json({ message: "Incident created successfully", incident });
@@ -122,6 +125,10 @@ export async function updateIncident(req, res) {
 
     if (!incident) {
       return res.status(400).json({ message: "Incident not found" });
+
+      const io=req.app.get("io")
+      io.to("dashboard").emit("incidentUpdated",incident);
+      io.to(`dashboard ${incident._id}`).emit("incidentUpdated",incident);
     }
 
     res
