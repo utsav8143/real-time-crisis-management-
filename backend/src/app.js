@@ -5,6 +5,7 @@ import incidentRoute from "./routes/incidentRoute.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 
+
 const app=express()
 
 app.use(morgan('dev'));
@@ -12,8 +13,10 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
     origin:"http://localhost:5173",
-    credentials:true
+    methods:['GET','POST', 'PATCH'],
 }));
+
+
 
 app.use("/api/auth",authRoute)
 app.use("/api/incident",incidentRoute)

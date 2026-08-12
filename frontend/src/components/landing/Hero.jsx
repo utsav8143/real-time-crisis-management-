@@ -1,7 +1,7 @@
 import React from "react";
 import INCIDENTS from "../../utils/data.js";
 import { Link } from "react-router-dom";
-import LightRays from "../../animations/LightRays.jsx";
+
 
 const Hero = () => {
   const severityStyle = {
