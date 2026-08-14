@@ -23,7 +23,7 @@ const Hero = () => {
         
         <div >
           <div className="mt-25 flex gap-2 items-center">
-            <div class="absolute inset-y-[6%] inset-x-[-5%] opacity-35 pointer-events-none hero-grid-bg"></div>
+            <div className="absolute inset-y-[6%] inset-x-[-5%] opacity-35 pointer-events-none hero-grid-bg"></div>
               
             <div className="w-2 h-2 rounded-xl bg-red-700 shadow=[0_0_0_0_rgba(229,72,77,0.6)] animate-pulse-ring shrink"></div>
             <p className="text-white text-sm">MERN . SOCKET.IO . GEMINI</p>

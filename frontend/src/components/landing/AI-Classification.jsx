@@ -27,10 +27,10 @@ const AIClassification = () => {
             </div>
             <div className="p-8">
               <h2 className="text-gray-400"> classify ( </h2>
-              <p className="text-green-500 mt-2">
+              <h3 className="text-green-500 mt-2">
                 "Smoke coming from the warehouse on 3rd Ave, getting worse"
                 <p className="text-gray-400">)</p>
-              </p>
+              </h3>
               <div className="mt-6 text-gray-400">
                 <div>
                   <span className="text-blue-700">"severity"</span> :{" "}
