@@ -5,6 +5,11 @@ import Register from './pages/Register.jsx'
 import Dashboard from './pages/Dashboard.jsx'
 import ProtectedRoute from './components/layout/ProtectedRoute.jsx'
 import LandingPage from './pages/LandingPage.jsx'
+import DashboardLayout from './components/layout/DashboardLayout.jsx';
+import IncidentMap from './components/incidents/IncidentMap.jsx'
+import IncidentCard from './components/incidents/IncidentCard.jsx'
+import IncidentForm from './components/incidents/IncidentForm.jsx'
+
 
 const App = () => {
   return (
@@ -14,9 +19,14 @@ const App = () => {
       <Route path="/register" element={<Register/>}/>
       <Route path="/dashboard" element={
         <ProtectedRoute>
-        <Dashboard/>
+        <DashboardLayout/>
         </ProtectedRoute>
-      }/>
+      }>
+      <Route index element={<Dashboard/>}/>
+      <Route path="incidents" element={<IncidentCard />} />
+    <Route path="map" element={<IncidentMap />} />
+    <Route path="incident-form" element={<IncidentForm/>}/>
+    </Route>
     </Routes>
   )
 }

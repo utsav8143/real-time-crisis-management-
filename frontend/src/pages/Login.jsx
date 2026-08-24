@@ -53,7 +53,7 @@ const Login = () => {
 
       <div className="min-h-screen bg-color relative z-10 opacity-95 ">
         <div className="flex  ">
-          <div className=" h-3 w-3 bg-red-600 rounded-sm  mt-5 ms-2 flex justify-center items-center animate-glow">
+          <div className=" h-3 w-3 bg-red-6 00 rounded-sm  mt-5 ms-2 flex justify-center items-center animate-glow">
             <div className="h-1.5 w-1.5 bg-red-800 rounded-sm "></div>
           </div>
           <h1 className="font-bold text-2xl m-2 text-white">ResQ</h1>
@@ -121,6 +121,7 @@ const Login = () => {
                       type="submit"
                       disabled={loading}
                       className="border border-yellow-700 hover:border-yellow-900 hover:cursor-pointer  transition-transform w-full mt-12 p-3 rounded-3xl flex gap-2 ps-40 bg-linear-to-r from-yellow-600 to-yellow-800 font-semibold "
+                    
                     >
                       {loading ? "Logging in..." : "Login"}
                       <ArrowRight className="h-5 w-5 mt-1 group-hover:translate-x-1 transition-transform " />
