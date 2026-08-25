@@ -30,7 +30,7 @@ function IncidentMap({incidents}){
   const defaultCenter=[26.2309, 77.4126];
  
   return (
-    <div className="h-100 w-1/2">
+    <div className="h-100 w-full">
       <MapContainer
         center={defaultCenter}
         zoom={13}

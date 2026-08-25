@@ -10,8 +10,7 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
     const token = localStorage.getItem("token");
-    localStorage.removeItem("user")
-    localStorage.removeItem("token");
+   
 
     if (storedUser && token) {
       setUser(JSON.parse(storedUser));
@@ -21,10 +20,12 @@ export function AuthProvider({ children }) {
 
   const login = async (email, password) => {
     const { data } = await api.post("/api/auth/login", { email, password });
-    const { token, user:userData } = data;
+    const { accessToken, user:userData } = data;
+  
 
-    localStorage.setItem("token", token);
+    localStorage.setItem("token", accessToken);
     localStorage.setItem("user", JSON.stringify(userData));
+   
     setUser(userData);
     return userData;
   };
@@ -36,9 +37,9 @@ export function AuthProvider({ children }) {
       password,
       role,
     });
-    const { token, user:userData } = data;
+    const { accessToken, user:userData } = data;
 
-    localStorage.setItem("token", token);
+    localStorage.setItem("token", accessToken);
     localStorage.setItem("user", JSON.stringify(userData));
     setUser(userData);
     return userData;

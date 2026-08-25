@@ -67,7 +67,7 @@ export async function viewIncidents(req, res) {
 
     res
       .status(200)
-      .json({ message: "Incidents Fetched successfully", incident });
+      .json({ message: "Incidents Fetched successfully", incidents:incident });
   } catch (err) {
     res.status(400).json({ message: "Failed to fetch incidents" });
     console.log(err);

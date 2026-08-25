@@ -84,8 +84,9 @@ const DashboardLayout = () => {
             <Plus className="size-5" />
             <h1 className="">Incidents</h1>
           </div>
+        
         </div>
-        <div className="">
+          <div className="w-full">
             <main className="">
               <Outlet/>
             </main>
