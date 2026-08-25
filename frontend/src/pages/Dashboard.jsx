@@ -101,7 +101,7 @@ const Dashboard = () => {
       </div>
 
       <div className="mt-10 border border-gray-700 lg:w-3/8 rounded-lg h-108">
-       {/* <LiveIncidents/> */}
+       <LiveIncidents/>
       </div>
       </div>
     </div>

@@ -9,7 +9,7 @@ const SOCKET_URL=import.meta.env.VITE_API_URL || "http://localhost:5000"
 
 export function SocketProvider({children}){
   const [socket, setSocket] = useState(null);
-  const user=useAuth();
+  const {user}=useAuth();
 
   useEffect(()=>{
     if(!user) return;
@@ -21,7 +21,7 @@ export function SocketProvider({children}){
     });
 
     newSocket.on("connect",()=>{
-      newSocket.emit("joinDahsboard");
+      newSocket.emit("joinDashboard");
     });
 
     setSocket(newSocket);
