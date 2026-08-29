@@ -3,7 +3,7 @@ import React from 'react'
 const IncidentForm = () => {
   return (
     <div id='incident-form'>
-      INCIDENT FORM new
+      INCIDENT FORM updated
     </div>
   )
 }
