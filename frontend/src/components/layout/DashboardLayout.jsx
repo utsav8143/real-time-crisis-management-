@@ -35,7 +35,7 @@ const DashboardLayout = () => {
           <div className="flex gap-3 items-center">
             <div className="text-white border border-gray-600 p-2 rounded-xl">{user?.name} {user?.role}</div>
             <Link
-              to="/report"
+              to="/dashboard/report"
               className="flex items-center font-bold text-primary border p-2 rounded-full hover:border hover:border-white hover:scale-95 hover:transition-all duration-200"
             >
               Report{" "}
@@ -65,7 +65,7 @@ const DashboardLayout = () => {
           </div>
           <div
             className="text-white flex items-center gap-2  p-5 text-sm mt-4 hover:cursor-pointer hover:bg-gray-800 transition-all duration-200"
-            onClick={() => handleNavigate("/dashboard/incident-form")}
+            onClick={() => handleNavigate("/dashboard/report")}
           >
             <Form className="size-5" />
             <h1 className="">Incident Form</h1>

@@ -25,7 +25,7 @@ const App = () => {
       <Route index element={<Dashboard/>}/>
       <Route path="incidents" element={<IncidentCard />} />
     <Route path="map" element={<IncidentMap />} />
-    <Route path="incident-form" element={<IncidentForm/>}/>
+    <Route path="report" element={<IncidentForm/>}/>
     </Route>
     </Routes>
   )
