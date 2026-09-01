@@ -18,8 +18,8 @@ const Dashboard = () => {
   useEffect(() => {
     async function fetchIncidents() {
       try {
-        const { data } = await api.get("/api/incident/view-incidents",{withCredentials:true});
-        setIncident(data.incident);
+        const { data } = await api.get("/incident/view-incidents",{withCredentials:true});
+        setIncident(data.incidents);
       } catch (err) {
         console.error("Failed to fetch incidents", err);
       } finally {
@@ -101,7 +101,7 @@ const Dashboard = () => {
       </div>
 
       <div className="mt-10 border border-gray-700 lg:w-3/8 rounded-lg h-108">
-       <LiveIncidents/>
+       <LiveIncidents incidents={incident}/>
       </div>
       </div>
     </div>

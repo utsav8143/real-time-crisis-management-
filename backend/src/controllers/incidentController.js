@@ -37,6 +37,7 @@ export async function createIncident(req, res) {
     const populate = await incident.populate("reportedBy", "name email role");
 
     const io=req.app.get("io");
+    console.log('📡 Emitting newIncident to dashboard room');
     io.to("dashboard").emit("newIncident", populate);
 
     res

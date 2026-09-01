@@ -18,6 +18,7 @@ const IncidentForm = () => {
     description: "",
     category: "",
     location: "",
+    address: "",
   });
   const [coords, setCoords] = useState(null);
   const [locating, setLocating] = useState(false);
@@ -72,7 +73,7 @@ const IncidentForm = () => {
 
     setSubmitting(true);
     try {
-      await api.post("/api/incident/report", {
+      await api.post("/incident/report", {
         title: form.title,
         description: form.description,
         category: form.category,
@@ -132,6 +133,16 @@ const IncidentForm = () => {
               />
             </div>{" "}
             <div className="mt-5">
+                <label htmlFor="address" className="block text-white">Address</label>
+                <input type="text"
+                name="address"
+                value={form.address}
+                onChange={handleChange}
+                className="text-white p-1 border-2 border-gray-700 mt-1 w-1/2 rounded-sm"
+                placeholder="Near city Hospital, Sector 12"
+                />
+              </div>
+            <div className="mt-5">
               <label htmlFor="category" className="text-white block">
                 Category
               </label>
@@ -181,10 +192,12 @@ const IncidentForm = () => {
                 )}
                 {locationError && <p>{locationError}</p>}
               </div>
+
+              
             </div>
             <div className="flex justify-center">
               <button
-                className=" mt-20 border p-2 rounded-full w-1/2 mx-auto bg-linear-to-r from-yellow-900 to-yellow-500  hover:scale-102 transition-all duration-200 hover:cursor-pointer"
+                className=" mt-13 border p-2 rounded-full w-1/2 mx-auto bg-linear-to-r from-yellow-900 to-yellow-500  hover:scale-102 transition-all duration-200 hover:cursor-pointer"
                 type="submit"
                 disabled={submitting}
               >

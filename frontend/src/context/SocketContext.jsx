@@ -21,6 +21,7 @@ export function SocketProvider({children}){
     });
 
     newSocket.on("connect",()=>{
+      
       newSocket.emit("joinDashboard");
     });
 

@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 
 const LiveIncidents = ({incidents}) => {
 
+  
+
     const SEV_COLOR={
           critical: '#F0555B',
   high: '#E88A2B',
@@ -28,15 +30,17 @@ const LiveIncidents = ({incidents}) => {
         <p className="text-white">No incidents right now.</p>
       )}
       {activeIncidents.map((inc)=>{
+        return(
          <Link to={`/incidents/${inc._id}`} key={inc._id}>
           <span className="" style={{background: SEV_COLOR[inc.severity]}}></span>
           <div className="" style={{color: SEV_COLOR[inc.severity]}}>{inc.severity}</div>
           <div className="">{inc.title}</div>
           <div className="">{new Date(inc.createdAt).toLocaleTimeString([],{
             hour:'2-digit',
-            minutes:'2-digit',
+            minute:'2-digit',
           })}{''} . {inc.status}</div>
          </Link>
+        )
       })}
     </div>
    </div>
