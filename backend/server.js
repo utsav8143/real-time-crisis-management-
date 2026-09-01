@@ -19,6 +19,8 @@ const port = process.env.PORT || 3000;
 
 setupSocket(io);
 
+app.set("io", io);
+
 
 
 server.listen(process.env.PORT, () => {
