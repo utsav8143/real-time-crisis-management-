@@ -14,10 +14,15 @@ if(!process.env.JWT_SECRET_KEY){
     throw new Error("JWT KEY is not defined in env")
 }
 
+if(!process.env.GEMINI_API_KEY){
+    throw new Error("GEMINI API KEY is not defined in env")
+}
+
 const config={
     PORT:process.env.PORT,
     MONGO_URI:process.env.MONGO_URI,
-    JWT_SECRET_KEY:process.env.JWT_SECRET_KEY
+    JWT_SECRET_KEY:process.env.JWT_SECRET_KEY,
+    GEMINI_API_KEY:process.env.GEMINI_API_KEY
 }
 
 export default config
