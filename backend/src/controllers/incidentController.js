@@ -1,16 +1,16 @@
 import incidentModel from "../models/incidentModel.js";
 import userModel from "../models/userModel.js";
+import {classifyIncident} from "../services/geminiService.js";
 
 //  @desc report incident
 // @ROUTE POST/api/incident/report
 // @access Private
 export async function createIncident(req, res) {
+
   const {
     title,
     description,
-    severity,
-    location,
-    reportedBy,
+    category,
     coordinates,
     address,
   } = req.body;
@@ -21,11 +21,19 @@ export async function createIncident(req, res) {
         .status(400)
         .json({ message: "Valid location coordinates are required" });
     }
+   if (!category) {
+      return res.status(400).json({ message: "Category is required" }); 
+   }
+
+    const {severity, summary , reasoning}= await classifyIncident(title, description, category);
 
     const incident = await incidentModel.create({
       title,
       description,
       severity,
+      category,
+      aiSummary: summary,
+      aiReasoning: reasoning,
       location: {
         type: "Point",
         coordinates, //[lng,lat]
@@ -34,15 +42,22 @@ export async function createIncident(req, res) {
       reportedBy: req.user._id,
     });
 
-    const populate = await incident.populate("reportedBy", "name email role");
+    const populated = await incident.populate("reportedBy", "name email role");
 
     const io=req.app.get("io");
     console.log('📡 Emitting newIncident to dashboard room');
-    io.to("dashboard").emit("newIncident", populate);
+    io.to("dashboard").emit("newIncident", populated);
+
+    // await logActivity(io, {
+    //   type: "incident_reported",
+    //   message: `New incident reported by ${req.user.name}`,
+    //   incidentId: incident._id,
+    //   userId: req.user._id,
+    // });
 
     res
       .status(201)
-      .json({ message: "Incident created successfully", incident });
+      .json({ message: "Incident created successfully", populated });
   } catch (err) {
     res.status(500).json({ message: "Error in creating incident" });
     console.log(err);

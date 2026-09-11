@@ -15,6 +15,8 @@ const LiveIncidents = ({ incidents }) => {
     .filter((inc) => inc.status !== "resolved")
     .sort((a, b) => severityOrder[a.severity] - severityOrder[b.severity])
     .slice(0, 6);
+ 
+  console.log("CreatedAt:", incidents.createdAt);
 
   return (
     <div className="">
@@ -22,25 +24,30 @@ const LiveIncidents = ({ incidents }) => {
         <h1 className="text-gray-400 text-sm">LIVE INCIDENTS</h1>
         <p className="text-gray-600">real-time</p>
       </div>
-      <div className="overflow-y-auto max-h-96 scrollbar scrollbar-thumb-gray-700 scrollbar-track-gray-900 scrollbar-thin" >
+      <div className="overflow-y-auto max-h-96 scrollbar scrollbar-thumb-gray-700 scrollbar-track-gray-900 scrollbar-thin">
         {activeIncidents.length === 0 && (
           <p className="text-white p-2 font-bold">No incidents now.</p>
         )}
         {activeIncidents.map((inc) => {
           return (
-            <div className="border-b border-b-gray-700 p-1 ">
+            <div className="border-b border-b-gray-700 p-1 " key={inc._id}>
               <Link
                 to={`/incidents/${inc._id}`}
-                key={inc._id}
+                
                 className="grid lg:grid-cols-3 p-2"
               >
                 <div
-                  className="w-20 h-7 rounded-full border flex items-center justify-center"
-                  style={{ background: SEV_COLOR[inc.severity] }}
+                  className="w-25 h-10 rounded-full border flex items-center justify-center  uppercase font-bold text-sm "
+                  style={{
+                    background: `color-mix(in srgb, ${SEV_COLOR[inc.severity]} 30%, transparent)`,
+                  }}
                 >
-                <div className="size-5 border border-gray-800" style={{ color: SEV_COLOR[inc.severity] }}>
-                  {inc.severity}
-                </div>
+                  <div
+                    className=" "
+                    style={{ color: SEV_COLOR[inc.severity] }}
+                  >
+                    {inc.severity}
+                  </div>
                 </div>
                 <div className="text-white">{inc.title}</div>
                 <div className="text-gray-500">

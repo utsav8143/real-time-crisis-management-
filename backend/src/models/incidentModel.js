@@ -12,8 +12,11 @@ const incidentSchema=new mongoose.Schema({
     status:{type:String, enum:["reported","verified","in-progress","resolved"], default:"reported"},
     reportedBy:{type:mongoose.Schema.Types.ObjectId, ref:"User"},
     aiSummary:String,
-    createdAt:{type:Date, deafult:Date.now}
+    createdAt:{type:Date, deafult:Date.now},
+    
 
+},{
+    timestamps:true
 });
 incidentSchema.index({location:"2dsphere"})
 

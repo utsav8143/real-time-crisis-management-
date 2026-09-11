@@ -16,7 +16,7 @@ const IncidentForm = () => {
   const [form, setform] = useState({
     title: "",
     description: "",
-    category: "",
+    category: "Flood",
     location: "",
     address: "",
   });
