@@ -16,7 +16,7 @@ const LiveIncidents = ({ incidents }) => {
     .sort((a, b) => severityOrder[a.severity] - severityOrder[b.severity])
     .slice(0, 6);
  
-  console.log("CreatedAt:", incidents.createdAt);
+  
 
   return (
     <div className="">
