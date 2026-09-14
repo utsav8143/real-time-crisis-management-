@@ -9,9 +9,27 @@ import DashboardLayout from './components/layout/DashboardLayout.jsx';
 import IncidentMap from './components/incidents/IncidentMap.jsx'
 import IncidentCard from './components/incidents/IncidentCard.jsx'
 import IncidentForm from './components/incidents/IncidentForm.jsx'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
 
 
 const App = () => {
+
+  const [incidents, setIncidents] = useState([])
+
+  useEffect(() => {
+
+    const token=localStorage.getItem("token");
+
+  axios.get("/api/incident/view-incidents", {
+  headers: {Authorization: `Bearer ${token}`},
+})
+    .then(res=>{
+      
+      setIncidents(res.data.incidents)})
+    .catch(err=>console.error(err));
+  },[])
+
   return (
     <Routes>
       <Route path='/' element={<LandingPage/>}/>
@@ -23,8 +41,8 @@ const App = () => {
         </ProtectedRoute>
       }>
       <Route index element={<Dashboard/>}/>
-      <Route path="incidents" element={<IncidentCard />} />
-    <Route path="map" element={<IncidentMap />} />
+      <Route path="incidents/:id" element={<IncidentCard incidents={incidents} />} />
+    <Route path="map" element={<IncidentMap incidents={incidents} />} />
     <Route path="report" element={<IncidentForm/>}/>
     </Route>
     </Routes>

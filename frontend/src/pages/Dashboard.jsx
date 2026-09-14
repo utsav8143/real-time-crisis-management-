@@ -10,6 +10,8 @@ const Dashboard = () => {
   const [incident, setIncident] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [filter, setFilter] = useState("all");
+  const [isOpen, setIsOpen] = useState(false)
+  const [isMenuopen, setIsMenuopen] = useState(false)
 
   const socket = useSocket();
   const { user, logout } = useAuth();
@@ -49,7 +51,7 @@ const Dashboard = () => {
   const filtered =
     filter === "all" ? incident : incident.filter((i) => i.severity === filter);
 
-  if (isLoading) return <div className="">Loading incidents...</div>;
+  if (isLoading) return <div className="p-5 text-white font-bold">Loading incidents...</div>;
 
   const criticalCount = (incident ?? []).filter(
     (inc) => inc.severity === "critical",
@@ -90,17 +92,17 @@ const Dashboard = () => {
       </div>
 
       <div className="lg:flex gap-5 grid grid-cols-1">
-      <div className="mt-10 border border-gray-700 lg:w-3/5 w-full h-80 rounded-lg">
+      <div className="mt-10 border border-gray-700 lg:w-3/5 w-full h-110 rounded-lg">
         <div className="flex justify-between border-b border-b-gray-700 p-1">
           <h1 className="text-gray-400 text-sm">LIVE RISK MAP</h1>
           <p className="text-gray-600">{active} active</p>
         </div>
-        <div className="flex-1 min-h-0">
-          <IncidentMap incidents={incident}/>
+        <div className="flex-1  h-100 overflow-hidden rounded-br-lg rounded-bl-lg">
+          <IncidentMap incidents={incident} className=""/>
         </div>
       </div>
 
-      <div className="mt-10 border border-gray-700 lg:w-3/8 rounded-lg h-108">
+      <div className="lg:mt-10 border border-gray-700 lg:w-3/8 rounded-lg h-108 mt-30">
        <LiveIncidents incidents={incident}/>
       </div>
       </div>

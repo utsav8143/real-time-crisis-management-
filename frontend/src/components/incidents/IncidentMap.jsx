@@ -26,11 +26,30 @@ function coloredIcon(severity){
   })
 }
 
+function FitBounds({ incidents }) {
+  const map = useMap();
+
+  useEffect(() => {
+    if (!incidents || incidents.length === 0) return;
+
+    const bounds = L.latLngBounds(
+      incidents.map((inc) => {
+        const [lng, lat] = inc.location.coordinates;
+        return [lat, lng];
+      })
+    );
+
+    map.fitBounds(bounds, { padding: [40, 40] }); 
+  }, [incidents, map]);
+
+  return null; 
+}
+
 function IncidentMap({incidents}){
   const defaultCenter=[26.2309, 77.4126];
- 
+
   return (
-    <div className="h-100 w-full">
+    <div className="h-screen w-full p-2">
       <MapContainer
         center={defaultCenter}
         zoom={13}
@@ -41,6 +60,9 @@ function IncidentMap({incidents}){
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
+
+        <FitBounds incidents={incidents} />
+
        {incidents?.map((incident)=>{
         const [lng,lat]=incident.location.coordinates;
         return( 

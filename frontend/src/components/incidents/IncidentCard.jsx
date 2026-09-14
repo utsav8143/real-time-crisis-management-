@@ -15,7 +15,7 @@ const IncidentCard = ({incident}) => {
        <SeverityBadge className=""/>
     </div>
     <p className="">{incident.title}</p>
-    <p className="">Status: {incident.status}</p>
+    <p className="">Status: {incident.status}</p> 
     </Link>
   )
 }
