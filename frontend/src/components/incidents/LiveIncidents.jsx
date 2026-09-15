@@ -33,7 +33,7 @@ const LiveIncidents = ({ incidents }) => {
           return (
             <div className="border-b border-b-gray-700 p-1" key={inc._id}>
               <Link
-                to={`/incidents/${inc._id}`}
+                to={`/dashboard/incidents/${inc._id}`}
                 
                 className="grid  grid-cols-3 p-2"
               >

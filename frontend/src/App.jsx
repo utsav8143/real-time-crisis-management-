@@ -11,6 +11,7 @@ import IncidentCard from './components/incidents/IncidentCard.jsx'
 import IncidentForm from './components/incidents/IncidentForm.jsx'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import IncidentDetail from './pages/IncidentDetail.jsx'
 
 
 const App = () => {
@@ -41,7 +42,7 @@ const App = () => {
         </ProtectedRoute>
       }>
       <Route index element={<Dashboard/>}/>
-      <Route path="incidents/:id" element={<IncidentCard incidents={incidents} />} />
+      <Route path="incidents/:id" element={<IncidentDetail incident={incidents} />} />
     <Route path="map" element={<IncidentMap incidents={incidents} />} />
     <Route path="report" element={<IncidentForm/>}/>
     </Route>
