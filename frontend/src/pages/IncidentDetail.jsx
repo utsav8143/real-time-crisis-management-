@@ -46,6 +46,7 @@ const IncidentDetail = () => {
     <p className="">{date}</p>
     <p className="">{incident.status}</p>
     <SeverityBadge severity={incident.severity}/>
+    <div className="">Severity</div>
     </div>
 </div>
 )}
