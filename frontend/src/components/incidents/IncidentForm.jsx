@@ -201,7 +201,7 @@ const IncidentForm = () => {
                 type="submit"
                 disabled={submitting}
               >
-                {submitting ? "Submitting..." : "Submit Report"}
+                {submitting ? "Submitting..." : "Report"}
               </button>
             </div>
           </div>

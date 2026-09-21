@@ -132,7 +132,7 @@ const DashboardLayout = () => {
           </div>
           <div
             className="text-white flex items-center gap-2  p-5 text-sm mt-4 hover:cursor-pointer hover:bg-gray-800 transition-all duration-200"
-            onClick={() => handleNavigate("/dashboard/incidents")}
+            onClick={() => handleNavigate("/dashboard/incidents") }
           >
             <Form className="size-5" />
             <h1 className="">Incidents</h1>

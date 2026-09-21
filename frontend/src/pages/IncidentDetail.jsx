@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import api from "../utils/axiosInstance.js";
-import SeverityBadge from "../components/incidents/SeverityBadge.jsx";
+
 
 const IncidentDetail = () => {
   const { id } = useParams();

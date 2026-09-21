@@ -45,6 +45,7 @@ const App = () => {
       <Route path="incidents/:id" element={<IncidentDetail incident={incidents} />} />
     <Route path="map" element={<IncidentMap incidents={incidents} />} />
     <Route path="report" element={<IncidentForm/>}/>
+    <Route path="incidents" element={<IncidentCard incident={incidents}/>}/>
     </Route>
     </Routes>
   )

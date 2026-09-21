@@ -54,7 +54,7 @@ const Dashboard = () => {
     filter === "all" ? incident : incident.filter((i) => i.severity === filter);
 
   if (isLoading)
-    return <div className="p-5 text-white font-bold">Loading incidents...</div>;
+    return <div className="p-5 text-white font-bold">Loading incidents...</div>
 
   const criticalCount = (incident ?? []).filter(
     (inc) => inc.severity === "critical",
@@ -106,7 +106,7 @@ const Dashboard = () => {
             <IncidentMap incidents={incident} className="" />
           </div>
         </div>
-        <div className="lg:mt-10 border border-gray-700 lg:w-3/8 rounded-lg h-108 mt-30">
+        <div className="lg:mt-10 border border-gray-700 lg:w-3/8 rounded-lg h-108 mt-5">
           <LiveIncidents incidents={incident} />
         </div>
       </div>

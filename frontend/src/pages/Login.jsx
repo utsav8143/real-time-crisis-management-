@@ -52,12 +52,12 @@ const Login = () => {
       </div>
 
       <div className="min-h-screen bg-color relative z-10 opacity-95 ">
-        <div className="flex  ">
-          <div className=" h-3 w-3 bg-red-6 00 rounded-sm  mt-5 ms-2 flex justify-center items-center animate-glow">
-            <div className="h-1.5 w-1.5 bg-red-800 rounded-sm "></div>
+        <div className="flex mt-3 ms-3 lg:ms-5">
+            <div className="h-3 w-3 bg-red-600 rounded-sm lg:mt-5 mt-4 flex justify-center items-center animate-pulse">
+              <div className="h-1.5 w-1.5 bg-red-900 rounded-sm"></div>
+            </div>
+            <h1 className="font-bold lg:text-2xl text-xl m-2 text-white">ResQ</h1>
           </div>
-          <h1 className="font-bold text-2xl m-2 text-white">ResQ</h1>
-        </div>
         <div className="w-full h-screen flex justify-center items-center">
           <div className="text-white bg-gray-800 w-2/3 rounded-4xl">
             <div className="flex items-center justify-center">
