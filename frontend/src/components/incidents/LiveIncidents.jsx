@@ -15,11 +15,8 @@ const LiveIncidents = ({ incidents }) => {
     .filter((inc) => inc.status !== "resolved")
     .sort((a, b) => severityOrder[a.severity] - severityOrder[b.severity])
     .slice(0, 6);
- 
-  
 
   return (
-    
     <div className="">
       <div className="flex justify-between p-1 border-b border-b-gray-700">
         <h1 className="text-gray-400 text-sm">LIVE INCIDENTS</h1>
@@ -34,7 +31,6 @@ const LiveIncidents = ({ incidents }) => {
             <div className="border-b border-b-gray-700 p-1" key={inc._id}>
               <Link
                 to={`/dashboard/incidents/${inc._id}`}
-                
                 className="grid  grid-cols-3 p-2"
               >
                 <div
@@ -42,11 +38,8 @@ const LiveIncidents = ({ incidents }) => {
                   style={{
                     background: `color-mix(in srgb, ${SEV_COLOR[inc.severity]} 30%, transparent)`,
                   }}
-                >
-                  <div
-                    className=" "
-                    style={{ color: SEV_COLOR[inc.severity] }}
-                  >
+                 >
+                  <div className=" " style={{ color: SEV_COLOR[inc.severity] }}>
                     {inc.severity}
                   </div>
                 </div>
