@@ -2,7 +2,7 @@ import userModel from "../models/userModel.js";
 import jwt from "jsonwebtoken";
 import crypto from "crypto";
 import config from "../config/config.js";
-import sessionmodel from "../models/Sessionmodel.js";
+import sessionmodel from "../models/SessionModel.js";
 
 
 // @desc Register User
