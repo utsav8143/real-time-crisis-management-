@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api=axios.create({
-    baseURL:import.meta.env.VITE_API_URL || "https://resq-5lul.onrender.com",
+    baseURL:import.meta.env.VITE_API_URL || "https://resq-5s4q.onrender.com",
     withCredentials:true,
 })
 
