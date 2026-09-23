@@ -57,7 +57,7 @@ const IncidentCard = () => {
 
   return (
     <div className='h-screen'>
-      <div className="overflow-y-auto max-h-96 scrollbar scrollbar-thumb-gray-700 scrollbar-track-gray-900 scrollbar-thin  ">
+      <div className="overflow-y-auto  scrollbar scrollbar-thumb-gray-700 scrollbar-track-gray-900 scrollbar-thin  ">
         {activeIncidents.length === 0 && (
           <p className="text-white p-2 font-bold">No incidents now.</p>
         )}

@@ -19,7 +19,7 @@ const DashboardLayout = () => {
   const {user,logout} = useAuth();
 
   return (
-    <div className="">
+    <div className="max-h-screen">
       {/* Header Section */}
       <div className="border-b-gray-700 border-b flex justify-between items-center">
         <div className="flex items-center pb-2">
