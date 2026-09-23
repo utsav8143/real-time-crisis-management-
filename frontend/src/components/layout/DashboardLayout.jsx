@@ -108,7 +108,7 @@ const DashboardLayout = () => {
         </div>
       </div>
       <div className="flex ">
-        <div className="border-r border-gray-700 border-l  lg:w-1/7 w-1/4  hidden lg:block ">
+        <div className="border-r border-gray-700 border-l  lg:w-1/7 w-1/4  hidden lg:block h-screen">
           <div
             className="text-white flex items-center gap-2  p-5 text-sm hover:cursor-pointer hover:bg-gray-800 transition-all duration-200"
             onClick={() => {handleNavigate("/dashboard") }}

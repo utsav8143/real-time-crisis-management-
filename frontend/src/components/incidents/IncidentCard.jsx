@@ -51,8 +51,8 @@ const IncidentCard = () => {
 
    const activeIncidents = incident.filter((inc) => inc.status !== "resolved");
 
-  if(isLoading) return <p className="">Loading Incidents...</p>
-  if(error) return <p className="">{error}</p>
+  if(isLoading) return <p className="p-4 text-white font-bold lg:text-lg">Loading Incidents...</p>
+  if(error) return <p className="text-red-700 border border-red-700 rounded-xl p-2">{error}</p>
    
 
   return (
