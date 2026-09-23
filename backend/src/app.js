@@ -12,7 +12,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-    origin:"https://resq-5s4q.onrender.com",
+    origin:"https://resq-frontend-hc2e.onrender.com",
     methods:['GET','POST', 'PATCH'],
     credentials:true,
 }));
