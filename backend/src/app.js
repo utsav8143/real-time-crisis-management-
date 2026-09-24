@@ -12,7 +12,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-    origin:"http://localhost:5173",
+    origin:"https://resq-frontend-hc2e.onrender.com",
     methods:['GET','POST', 'PATCH'],
     credentials:true,
 }));
