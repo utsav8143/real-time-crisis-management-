@@ -11,12 +11,12 @@ const Features = () => {
             </div>
 
             <div className="mt-20 grid lg:grid-cols-3 sm:grid-cols-2 bg-gray-900 rounded-xl">
-                <div className="p-7 border border-gray-600 rounded-tl-xl  hover:bg-gray-800 transition-colors duration-200">
+                <div className="p-7 border border-gray-600 rounded-tl-xl  hover:bg-gray-800 transition-colors duration-200 lg:rounded-tr-none rounded-tr-xl">
                     <LocateFixed className=' text-primary h-8 w-8 '/>
                     <h1 className=" text-white mt-5">Interactive Live Map</h1>
                     <p className="text-gray-400 mt-3">Every open incident plotted geospatially, updating in real time as reports come in.</p>
                 </div>
-                <div className="p-7 border border-gray-600 rounded-tr-xl lg:rounded-none hover:bg-gray-800 transition-colors duration-200">
+                <div className="p-7 border border-gray-600  lg:rounded-none hover:bg-gray-800 transition-colors duration-200">
                     <BrainCircuit className='text-primary h-8 w-8'/>
                     <h1 className=" text-white mt-5">AI Severity Prediction</h1>
                     <p className="text-gray-400 mt-3">Gemini reads each report's free text and returns a consistent severity rating in seconds.</p>
@@ -31,12 +31,12 @@ const Features = () => {
                     <h1 className=" text-white mt-5">Responder & Admin Dashboards</h1>
                     <p className="text-gray-400 mt-3">Assigned incidents, live status, and team locations in one always-current view.</p>
                 </div>
-                <div className="p-7 border border-gray-600 rounded-bl-xl lg:rounded-none hover:bg-gray-800 transition-colors duration-200">
+                <div className="p-7 border border-gray-600   hover:bg-gray-800 transition-colors duration-200">
                     <Bell className='text-primary h-8 w-8'/>
                     <h1 className=" text-white mt-5">Zone-based notifications</h1>
                     <p className="text-gray-400 mt-3">Firebase push alerts reach only the teams inside the affected zone — nobody else.</p>
                 </div>
-                <div className="p-7 border border-gray-600 rounded-br-xl hover:bg-gray-800 transition-colors duration-200">
+                <div className="p-7 border border-gray-600 rounded-br-xl hover:bg-gray-800 transition-colors duration-200 lg:rounded-bl-none rounded-bl-xl">
                     <Radio className='text-primary h-8 w-8'/>
                     <h1 className=" text-white mt-5">Live Status Tracking</h1>
                     <p className="text-gray-400 mt-3">Every incident's stage — reported, classified, assigned, resolved — updates on the board instantly.</p>

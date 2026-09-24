@@ -71,13 +71,13 @@ const Hero = () => {
                   className="grid grid-cols-4 p-3 border-b border-gray-400 text-sm shrink-0"
                   key={index}
                 >
-                  <div className="text-gray-500 ms-5 font-extrabold">
+                  <div className="text-gray-500 lg:ms-5 lg:font-extrabold ">
                     {incident.time}
                   </div>
-                  <div className="text-gray-500 ms-3">{incident.category}</div>
+                  <div className="text-gray-500 lg:ms-3">{incident.category}</div>
                   <div className="text-white">{incident.Location}</div>
                   <div
-                    className={`ms-20 border rounded-sm p-1 text-center opacity-80 sm:h-8 ${getSeverityStyle(incident.severity)}`}
+                    className={`lg:ms-20 ms-3 border rounded-sm p-1 text-center opacity-80 h-8 ${getSeverityStyle(incident.severity)}`}
                   >
                     {incident.severity}
                   </div>

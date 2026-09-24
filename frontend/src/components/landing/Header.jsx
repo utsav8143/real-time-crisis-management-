@@ -24,7 +24,7 @@ const Header = () => {
     }`}>
     <div >
       <div className="flex  lg:justify-evenly justify-between ">
-        <div className="flex  mt-3 sm:ms-5 ">
+        <div className="flex  mt-3 ms-5 lg:ms-0 ">
           <div className=" h-3 w-3 bg-red-600 rounded-sm  mt-5  flex justify-center items-center animate-pulse  ">
             <div className="h-1.5 w-1.5 bg-red-900 rounded-sm "></div>
           </div>

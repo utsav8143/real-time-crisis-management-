@@ -12,7 +12,7 @@ const Footer = () => {
           <h1 className="font-bold text-xl m-2 text-white">ResQ</h1>
         </div>
       
-      <div className="flex items-center gap-1">
+      <div className="flex items-center gap-1 ">
         <Copyright className="text-white h-4 w-4 mt-1" />
         <span className="text-white">2026 ResQ. All rights reserved</span>
         <a href="#hero">

@@ -115,7 +115,7 @@ const IncidentForm = () => {
                 onChange={handleChange}
                 placeholder="e.g. Flooding near Main St bridge"
                 required
-                className=" border-2 mt-1 p-1 text-white border-gray-700 w-1/2 rounded-sm"
+                className=" border-2 mt-1 p-1 text-white border-gray-700 lg:w-1/2 w-3/4 rounded-sm"
               />
             </div>
             <div className="mt-5">
@@ -129,7 +129,7 @@ const IncidentForm = () => {
                 onChange={handleChange}
                 placeholder="Describe what you're seeing."
                 required
-                className="border-2 p-1 text-white border-gray-700 w-1/2 rounded-sm mt-1"
+                className="border-2 p-1 text-white border-gray-700 lg:w-1/2 w-3/4 rounded-sm mt-1"
               />
             </div>{" "}
             <div className="mt-5">
@@ -138,7 +138,7 @@ const IncidentForm = () => {
                 name="address"
                 value={form.address}
                 onChange={handleChange}
-                className="text-white p-1 border-2 border-gray-700 mt-1 w-1/2 rounded-sm"
+                className="text-white p-1 border-2 border-gray-700 mt-1 lg:w-1/2 w-3/4 rounded-sm"
                 placeholder="Near city Hospital, Sector 12"
                 />
               </div>
@@ -150,7 +150,7 @@ const IncidentForm = () => {
                 name="category"
                 onChange={handleChange}
                 value={form.category}
-                className="text-white p-1 border-2 border-gray-700 mt-1 w-1/4 rounded-sm"
+                className="text-white p-1 border-2 border-gray-700 mt-1 lg:w-1/4 w-1/2 rounded-sm"
               >
                 {CATEGORIES.map((cat) => (
                   <option className="bg-gray-700" key={cat} value={cat}>
@@ -172,7 +172,7 @@ const IncidentForm = () => {
                     </span>
                     <button
                       type="button"
-                      className="ms-5 border  p-1 rounded-sm text-blue-500 font-bold  hover:scale-90 transition-all duration-200 hover:cursor-pointer"
+                      className="lg:ms-5 border  p-1 rounded-sm text-blue-500 font-bold  hover:scale-90 transition-all duration-200 hover:cursor-pointer ms-2 text-sm lg:text-base "
                       onClick={captureLocation}
                     >
                       Recapture

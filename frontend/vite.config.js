@@ -9,7 +9,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://resq-5s4q.onrender.com', 
+        target: 'http://localhost:5000', 
         changeOrigin: true,
       },
     },

@@ -16,7 +16,7 @@ const Map = () => {
   bg-size-[40px_40px] opacity-70 relative">
     <div className="bg-blue-400  animate-pulseB shrink h-2 w-2 rounded-xl absolute top-19 left-19 group"><div className='group-hover:block text-gray-400 w-20 h-12 text-center absolute top-10 -left-8 hidden  '>Zone-15 , FIRE</div></div>
     <div className="bg-red-400  animate-pulseR shrink h-2 w-2 rounded-xl absolute top-79 left-59 group"><div className='group-hover:block text-gray-400 w-20 h-12 text-center absolute top-5 -left-8 hidden  '>Zone-17 , MEDICAL</div></div>
-    <div className="bg-yellow-400  animate-pulseY shrink h-2 w-2 rounded-xl absolute top-49 left-99 group"><div className='group-hover:block text-gray-400 w-20 h-12 text-center absolute top-10 -left-8 hidden  '>Zone-33 , FLOOD</div></div>
+    <div className="bg-yellow-400  animate-pulseY shrink h-2 w-2 rounded-xl absolute top-49 left-99 group hidden"><div className='group-hover:block text-gray-400 w-20 h-12 text-center absolute top-10 -left-8 hidden  '>Zone-33 , FLOOD</div></div>
 
     <div className="bg-blue-400  animate-pulseB shrink h-2 w-2 rounded-xl absolute lg:top-89 lg:left-159 group top-59 left-29"><div className='group-hover:block text-gray-400 w-20 h-12 text-center absolute  bottom-7 -left-8 hidden  '>Zone-01, FIRE</div></div>
     <div className="bg-yellow-400  animate-pulseY shrink h-2 w-2 rounded-xl absolute lg:top-19 lg:left-199 top-19 left-59 group "><div className='group-hover:block text-gray-400 w-20 h-12 text-center absolute top-10 -left-8 hidden  '>Zone-81, ACCIDENT</div></div>

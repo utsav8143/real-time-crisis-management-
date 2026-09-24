@@ -85,10 +85,6 @@ export async function login(req, res) {
       return res.status(401).json({ message: "Invalid email or password" });
     }
 
-    if (!user.verified) {
-      return res.status(401).json({ message: "User not verified" });
-    }
-
     const hashedPassword = crypto
       .createHash("sha256")
       .update(password)

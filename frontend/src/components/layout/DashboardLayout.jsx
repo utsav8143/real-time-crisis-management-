@@ -18,10 +18,16 @@ const DashboardLayout = () => {
 
   const {user,logout} = useAuth();
 
+  const handleLogout= async()=>{
+    await logout();
+    setIsOpen(false);
+    navigate("/", {replace : true});
+  };
+
   return (
-    <div className="max-h-screen">
+    <div className="h-screen flex flex-col overflow-hidden">
       {/* Header Section */}
-      <div className="border-b-gray-700 border-b flex justify-between items-center">
+      <div className="border-b-gray-700 border-b flex justify-between items-center shrink-0">
         <div className="flex items-center pb-2">
           <div className="flex mt-3 ms-3 lg:ms-5">
             <div className="h-3 w-3 bg-red-600 rounded-sm lg:mt-5 mt-4 flex justify-center items-center animate-pulse">
@@ -47,7 +53,7 @@ const DashboardLayout = () => {
             </Link>
             <div className="">
               <button
-                onClick={logout}
+                onClick={handleLogout}
                 className="lg:flex hidden border border-white text-white p-2 rounded-full hover:border-primary hover:text-primary hover:cursor-pointer transition-all hover:scale-95 duration-200"
               >
                 Logout
@@ -94,7 +100,7 @@ const DashboardLayout = () => {
                      
                   </div>
                     <div className=" mt-2 flex items-center justify-center  bg-gray-400  border border-white  p-2 rounded-full hover:border-primary hover:text-primary hover:cursor-pointer transition-all hover:scale-95 duration-200  ">
-                      <button className="text-black font-bold" onClick={logout}>Logout</button>
+                      <button className="text-black font-bold" onClick={handleLogout}>Logout</button>
                     </div>
                     <div className="mt-3 flex items-center justify-center font-bold text-primary border p-2 rounded-full hover:border hover:border-white hover:scale-95 hover:transition-all duration-200"
                     onClick={()=>isOpen(false)}>
@@ -107,8 +113,8 @@ const DashboardLayout = () => {
           </div>
         </div>
       </div>
-      <div className="flex ">
-        <div className="border-r border-gray-700 border-l  lg:w-1/7 w-1/4  hidden lg:block h-screen">
+      <div className="flex flex-1 min-h-0">
+        <div className="border-r border-gray-700 border-l  lg:w-1/7 w-1/4  hidden lg:block h-screen overflow-y-auto">
           <div
             className="text-white flex items-center gap-2  p-5 text-sm hover:cursor-pointer hover:bg-gray-800 transition-all duration-200"
             onClick={() => {handleNavigate("/dashboard") }}
@@ -139,8 +145,8 @@ const DashboardLayout = () => {
           </div>
         
         </div>
-          <div className="w-full pb-7">
-            <main className="">
+          <div className="flex-1 min-w-0 overflow-y-auto scrollbar scrollbar-thumb-gray-700 scrollbar-track-gray-900 scrollbar-thin mb-4">
+            <main className="h-full">
               <Outlet/>
             </main>
         </div>

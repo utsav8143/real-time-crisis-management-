@@ -51,15 +51,15 @@ const Login = () => {
         />{" "}
       </div>
 
-      <div className="min-h-screen bg-color relative z-10 opacity-95 ">
-        <div className="flex mt-3 ms-3 lg:ms-5">
+      <div className="h-screen bg-color relative z-10 opacity-95 ">
+        <div className="flex mt-3 ms-3 lg:ms-5 ">
             <div className="h-3 w-3 bg-red-600 rounded-sm lg:mt-5 mt-4 flex justify-center items-center animate-pulse">
               <div className="h-1.5 w-1.5 bg-red-900 rounded-sm"></div>
             </div>
             <h1 className="font-bold lg:text-2xl text-xl m-2 text-white">ResQ</h1>
           </div>
-        <div className="w-full h-screen flex justify-center items-center">
-          <div className="text-white bg-gray-800 w-2/3 rounded-4xl">
+        <div className="mt-2 flex justify-center items-center">
+          <div className="text-white bg-gray-800 lg:w-2/3 w-5/6 rounded-4xl ">
             <div className="flex items-center justify-center">
               <FileText className="mt-10  border border-yellow-700 h-15 w-15 p-3 rounded-xl bg-yellow-600 text-white shadow-[0_10px_20px] shadow-amber-900" />
             </div>
@@ -79,13 +79,13 @@ const Login = () => {
                   {/* Email */}
 
                   <label className="">Email</label>
-                  <div className="relative mt-2 ">
+                  <div className="relative mt-2">
                     <Mail className="absolute w-6 h-6 m-3 text-gray-500 " />
                     <input
                       type="email"
                       value={email}
                       required
-                      className="border border-white rounded-sm p-2 pl-12 py-3 pe-5 w-100"
+                      className="border border-white rounded-sm p-2 pl-12 py-3 pe-5 lg:w-100 w-80 "
                       onChange={(e) => {
                         setEmail(e.target.value);
                         if (error) setError("");
@@ -105,7 +105,7 @@ const Login = () => {
                       required
                       onChange={(e) => setPassword(e.target.value)}
                       minLength={6}
-                      className="border border-white rounded-sm p-2 pl-12 py-3 pe-5 w-100 mt-2"
+                      className="border border-white rounded-sm p-2 pl-12 py-3 pe-5 lg:w-100 w-80   mt-2"
                       placeholder="Enter your password"
                     />
                   </div>
@@ -120,7 +120,7 @@ const Login = () => {
                     <button
                       type="submit"
                       disabled={loading}
-                      className="border border-yellow-700 hover:border-yellow-900 hover:cursor-pointer  transition-transform w-full mt-12 p-3 rounded-3xl flex gap-2 ps-40 bg-linear-to-r from-yellow-600 to-yellow-800 font-semibold "
+                      className="border border-yellow-700 hover:border-yellow-900 hover:cursor-pointer  transition-transform w-full mt-12 p-3 rounded-3xl flex gap-2 lg:ps-40 ps-33 bg-linear-to-r from-yellow-600 to-yellow-800 font-semibold "
                     
                     >
                       {loading ? "Logging in..." : "Login"}

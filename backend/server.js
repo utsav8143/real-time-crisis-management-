@@ -11,11 +11,11 @@ connectDB();
 const server=createServer(app)
 const io=new Server(server,{
   cors:{
-  origin:"https://resq-frontend-hc2e.onrender.com",
+  origin:"http://localhost:5173",
   methods:["GET","POST"],
   credentials: true
 }})
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 
 setupSocket(io);
 
