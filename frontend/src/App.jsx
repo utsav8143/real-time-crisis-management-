@@ -10,26 +10,25 @@ import IncidentMap from './components/incidents/IncidentMap.jsx'
 import IncidentCard from './components/incidents/IncidentCard.jsx'
 import IncidentForm from './components/incidents/IncidentForm.jsx'
 import { useState, useEffect } from 'react'
-import axios from 'axios'
+import api from './utils/axiosInstance.js'
 import IncidentDetail from './pages/IncidentDetail.jsx'
+import { useAuth } from './context/AuthContext.jsx'
 
 
 const App = () => {
 
   const [incidents, setIncidents] = useState([])
+  const {user, loading}=useAuth()
 
   useEffect(() => {
-
+      if(loading || !user) return; //wait for auth, skip if logged out
     const token=localStorage.getItem("token");
 
-  axios.get("/api/incident/view-incidents", {
-  headers: {Authorization: `Bearer ${token}`},
-})
-    .then(res=>{
-      
-      setIncidents(res.data.incidents)})
-    .catch(err=>console.error(err));
-  },[])
+  api
+      .get("/incident/view-incidents")
+      .then((res) => setIncidents(res.data.incidents))
+      .catch((err) => console.error(err));
+  }, [user, loading]);
 
   return (
     <Routes>

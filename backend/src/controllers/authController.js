@@ -63,9 +63,9 @@ export async function register(req, res) {
       user: {
         name: user.name,
         email: user.email,
-        password: user.password,
+        
       },
-      token: accessToken,
+       accessToken,
     });
   } catch (error) {
     console.log("Error:", error);
@@ -85,9 +85,9 @@ export async function login(req, res) {
       return res.status(401).json({ message: "Invalid email or password" });
     }
 
-    // if (!user.verified) {
-    //   return res.satatus(401).json({ message: "User not verified" });
-    // }
+    if (!user.verified) {
+      return res.satatus(401).json({ message: "User not verified" });
+    }
 
     const hashedPassword = crypto
       .createHash("sha256")
@@ -145,7 +145,7 @@ export async function login(req, res) {
         name: user.name,
         email: user.email,
       },
-      accessToken,
+       accessToken,
     });
   } catch (err) {
     console.log("Error in fething the user:", err);
