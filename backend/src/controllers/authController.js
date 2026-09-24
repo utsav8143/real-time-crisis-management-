@@ -86,7 +86,7 @@ export async function login(req, res) {
     }
 
     if (!user.verified) {
-      return res.satatus(401).json({ message: "User not verified" });
+      return res.status(401).json({ message: "User not verified" });
     }
 
     const hashedPassword = crypto
