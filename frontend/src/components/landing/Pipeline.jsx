@@ -4,7 +4,7 @@ import React from 'react'
 const Pipeline = () => {
   return (
     <section id='pipeline' className='scroll-mt-27'>
-    <div className="lg:mt-110 mt-110" >
+    <div className="lg:mt-110 mt-100" >
         <div className="">
             <h1 className="text-primary font-bold ">THE PIPELINE</h1>
         </div>
